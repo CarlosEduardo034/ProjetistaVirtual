@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h1>Formulário - Aba 01 (Orçamento)</h1>
+        <form id="formProjeto"> 
+            <label>Nome do Cliente:</label><br>
+            <input type="text" placeholder="Ex.: João da Silva" id="nomeCliente"><br><br>
+
+            <h2>Dados dos Módulos</h2>
+
+            <label>Potência do Módulo (W):</label><br> 
+            <input type="number" placeholder="Ex.: 480w" id="potenciaModulo"><br><br>
+
+            <label>Quantidade:</label><br> 
+            <input type="number" placeholder="Ex.: 10" id="quantidadeModulo"><br><br> 
+
+            <label>Área do arranjo (m³):</label><br> 
+            <input type="number" placeholder="Ex.: 30m²" id="areaArranjo" step="0.01"><br><br> 
+
+            <label>Fabricante:</label><br>
+            <input type="text" placeholder="Ex.: Trina Solar" id="fabricanteModulo"><br><br> 
+
+            <label>Modelo:</label><br> 
+            <input type="text" placeholder="Ex.: TSM-72-480" id="modeloModulo"><br><br>
+
+            <h2>Dados dos Inversores</h2> 
+
+            <label>Fabricante:</label><br> 
+            <input type="text" placeholder="Ex.: Huawei" id="fabricanteInversor"><br><br> 
+            
+            <label>Modelo:</label><br> 
+            <input type="text" placeholder="Ex.: SUN2000-5KTL" id="modeloInversor"><br><br> 
+            
+            <label>Potência Nominal (kW):</label><br> 
+            <input type="number" placeholder="Ex.: 5" id="potenciaInversor" step="0.01"><br><br> 
+            
+            <label>Faixa de tensão de operação (V):</label><br> 
+            <input type="text" placeholder="Ex.: 40V / 50V" id="tensaoOperacao"><br><br> 
+            
+            <label>Corrente Nominal (A):</label><br> 
+            <input type="number" placeholder="Ex.: 27,3"  id="correnteNominal" step="0.01"><br><br> 
+            
+            <label>Fator de potência:</label><br> 
+            <input type="number" placeholder="Ex.: < 3%" id="fatorPotencia" step="0.01"><br><br> 
+            
+            <label>Rendimento (%):</label><br> 
+            <input type="number" placeholder="Ex.: 97.9% / 97.2%" id="rendimento" step="0.01"><br><br> 
+            
+            <label>DHT de Corrente (%):</label><br> 
+            <input type="number" placeholder="Ex.: 50Hz / 45 a 55Hz" id="dht" step="0.01"><br><br>
+
+            <button type="button" id="salvar">Salvar</button>
+            <button type="button" id="voltar">Voltar</button>
+        </form>
+
+        <script src="js/form.js"></script>
+    </main>
+</body>
+
+</html>
