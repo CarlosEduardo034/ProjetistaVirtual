@@ -29,16 +29,23 @@ public class ProjetoService {
         }
 
         Projeto projetoSalvo = projetoRepository.save(projeto);
+
         String base = System.getProperty("user.home") + "/Desktop/Projetos em execução/";
         String nomeCliente = projeto.getNomeCliente().replaceAll("[\\\\/:*?\"<>|]", "_");
+        
+        criarPastaProjeto(projeto.getNomeCliente());
+
         String caminhoExcel = base + nomeCliente +
         "/DOCUMENTOS DA CONCESSIONARIA/" +
         "Formulario-de-Solicitacao-de-Orcamento-de-Microgeracao-Distribuida-Grupo-B.xlsx";
-
         ExcelService excelService = new ExcelService();
         excelService.preencherFormulario(caminhoExcel, projeto);
 
-        criarPastaProjeto(projeto.getNomeCliente());
+        String pastaPdf = base + nomeCliente +
+        "/PARECER DE ACESSO/DOC's";
+        PdfService pdfService = new PdfService();
+        pdfService.exportarAbasParaPdf(caminhoExcel, pastaPdf);
+
         return projetoSalvo;
     }
 

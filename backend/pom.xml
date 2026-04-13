@@ -58,6 +58,13 @@
             <artifactId>poi</artifactId>
             <version>5.2.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.jacob</groupId>
+            <artifactId>jacob</artifactId>
+            <version>1.21</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/jacob.jar</systemPath>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.poi</groupId>
