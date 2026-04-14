@@ -1,35 +1,28 @@
-    package com.fotovoltaico.backend.model;
+package com.fotovoltaico.backend.model;
 
-    import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
-    import jakarta.persistence.Entity;
-    import jakarta.persistence.GeneratedValue;
-    import jakarta.persistence.GenerationType;
-    import jakarta.persistence.Id;
-    import jakarta.persistence.OneToOne;
-    import lombok.Data;
+@Data
+@Entity
+public class Modulo {
 
-    @Data
-    @Entity
-    public class Modulo {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
-        private Integer potencia;
-        private Integer quantidade;
-        private Double area;
-        private String fabricante;
-        private String modelo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @OneToOne(mappedBy = "modulo")
-        @JsonIgnore
-        private Projeto projeto;
+    private Integer potencia;
+    private Integer quantidade;
+    private Double area;
+    private String fabricante;
+    private String modelo;
 
-        public Projeto getProjeto() {
-            return projeto;
-        }
-
-        public void setProjeto(Projeto projeto) {
-            this.projeto = projeto;
-        }
-    }
+    @ManyToOne
+    @JoinColumn(name = "projeto_id")
+    private Projeto projeto;
+}

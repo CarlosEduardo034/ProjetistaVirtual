@@ -8,61 +8,212 @@
 </head>
 
 <body>
-    <main>
-        <h1>Formulário - Aba 01 (Orçamento)</h1>
-        <form id="formProjeto"> 
-            <label>Nome do Cliente:</label><br>
-            <input type="text" placeholder="Ex.: João da Silva" id="nomeCliente"><br><br>
 
-            <h2>Dados dos Módulos</h2>
+    <h1>Cadastro de Projeto</h1>
 
-            <label>Potência do Módulo (W):</label><br> 
-            <input type="number" placeholder="Ex.: 480w" id="potenciaModulo"><br><br>
+    <form id="formProjeto">
+        <h2>Cliente</h2>
 
-            <label>Quantidade:</label><br> 
-            <input type="number" placeholder="Ex.: 10" id="quantidadeModulo"><br><br> 
+        <input type="text" id="clienteNome" placeholder="Nome / Razão Social"><br>
+        <input type="text" id="clienteCpfCnpj" placeholder="CPF/CNPJ"><br>
+        <input type="text" id="clienteRg" placeholder="RG"><br>
+        <input type="text" id="clienteDataExpedicao" placeholder="Data de Expedição"><br>
+        <input type="text" id="clienteEndereco" placeholder="Endereço"><br>
+        <input type="text" id="clienteCelular" placeholder="Telefone Celular"><br>
+        <input type="text" id="clienteFixo" placeholder="Telefone Fixo"><br>
+        <input type="text" id="clienteCep" placeholder="CEP"><br>
+        <input type="text" id="clienteMunicipio" placeholder="Município"><br>
+        <input type="text" id="clienteUf" placeholder="UF"><br>
+        <input type="email" id="clienteEmail" placeholder="Email"><br>
 
-            <label>Área do arranjo (m³):</label><br> 
-            <input type="number" placeholder="Ex.: 30m²" id="areaArranjo" step="0.01"><br><br> 
+        <h2>Características da Solicitação</h2>
 
-            <label>Fabricante:</label><br>
-            <input type="text" placeholder="Ex.: Trina Solar" id="fabricanteModulo"><br><br> 
+        <select title="Tipo de Orçamento" id="tipoOrcamento">
+            <option>Orçamento de Conexão</option>
+            <option>Orçamento Estimado</option>
+        </select><br>
 
-            <label>Modelo:</label><br> 
-            <input type="text" placeholder="Ex.: TSM-72-480" id="modeloModulo"><br><br>
+        <select title="Tipo de Solicitação" id="tipoSolicitacao">
+            <option>LIGAÇÃO NOVA DE UC COM GD</option>
+            <option>CONEXÃO EM UC EXISTENTE SEM AUMENTO</option>
+            <option>CONEXÃO EM UC EXISTENTE COM AUMENTO</option>
+            <option>AUMENTO DE GERAÇÃO SEM AUMENTO</option>
+            <option>AUMENTO DE GERAÇÃO COM AUMENTO</option>
+        </select><br>
 
-            <h2>Dados dos Inversores</h2> 
+        <input type="text" id="potenciaExistente" placeholder="Potência existente"><br>
 
-            <label>Fabricante:</label><br> 
-            <input type="text" placeholder="Ex.: Huawei" id="fabricanteInversor"><br><br> 
-            
-            <label>Modelo:</label><br> 
-            <input type="text" placeholder="Ex.: SUN2000-5KTL" id="modeloInversor"><br><br> 
-            
-            <label>Potência Nominal (kW):</label><br> 
-            <input type="number" placeholder="Ex.: 5" id="potenciaInversor" step="0.01"><br><br> 
-            
-            <label>Faixa de tensão de operação (V):</label><br> 
-            <input type="text" placeholder="Ex.: 40V / 50V" id="tensaoOperacao"><br><br> 
-            
-            <label>Corrente Nominal (A):</label><br> 
-            <input type="number" placeholder="Ex.: 27,3"  id="correnteNominal" step="0.01"><br><br> 
-            
-            <label>Fator de potência:</label><br> 
-            <input type="number" placeholder="Ex.: < 3%" id="fatorPotencia" step="0.01"><br><br> 
-            
-            <label>Rendimento (%):</label><br> 
-            <input type="number" placeholder="Ex.: 97.9% / 97.2%" id="rendimento" step="0.01"><br><br> 
-            
-            <label>DHT de Corrente (%):</label><br> 
-            <input type="number" placeholder="Ex.: 50Hz / 45 a 55Hz" id="dht" step="0.01"><br><br>
+        <select title="Possui Cargas" id="possuiCargas">
+            <option>Sim</option>
+            <option>Não</option>
+        </select><br>
 
-            <button type="button" id="salvar">Salvar</button>
-            <button type="button" id="voltar">Voltar</button>
-        </form>
+        <input type="text" id="detalhamentoCargas" placeholder="Detalhar cargas"><br>
 
-        <script src="js/form.js"></script>
-    </main>
+        <input type="text" id="ramoAtividade" placeholder="Ramo de atividade"><br>
+
+        <select title="Fonte Primária" id="fontePrimaria">
+            <option>Solar Fotovoltaica</option>
+            <option>Outras</option>
+        </select><br>
+
+        <input type="text" id="especificacaoFonte" placeholder="Especificar"><br>
+
+        <select title="Tipo de Geração" id="tipoGeracao">
+            <option>Inversor</option>
+            <option>Outra</option>
+        </select><br>
+
+        <select title="Modalidade de Compensação" id="modalidadeCompensacao">
+            <option>Autoconsumo Local</option>
+            <option>Autoconsumo Remoto</option>
+            <option>Geração Compartilhada</option>
+            <option>Múltiplas UCs</option>
+        </select><br>
+
+        <input type="date" id="dataInicio" placeholder="Data de Início"><br>
+
+
+        <h2>Unidade Consumidora</h2>
+
+        <input type="number" id="contaContrato" placeholder="Conta Contrato"><br>
+
+        <select title="Classe" id="classe">
+            <option>Residencial</option>
+            <option>Industrial</option>
+            <option>Comércio</option>
+            <option>Rural</option>
+        </select><br>
+
+        <select title="Tipo de Ligação" id="tipoLigacao">
+            <option>Monofásico</option>
+            <option>Bifásico</option>
+            <option>Trifásico</option>
+        </select><br>
+
+        <select title="Tensão" id="tensao">
+            <option>127</option>
+            <option>220</option>
+            <option>380</option>
+        </select><br>
+
+        <input type="number" id="cargaDeclarada" placeholder="Carga Declarada"><br>
+
+        <select title="Disjuntor" id="disjuntor">
+            <option>20</option>
+            <option>30</option>
+            <option>50</option>
+            <option>100</option>
+        </select><br>
+
+        <select title="Tipo de Ramal" id="tipoRamal">
+            <option>Aéreo</option>
+            <option>Subterrâneo</option>
+        </select><br>
+
+        <input type="text" id="poste" placeholder="Poste/Transformador"><br>
+        <input type="text" id="coordX" placeholder="Coordenada X"><br>
+        <input type="text" id="coordY" placeholder="Coordenada Y"><br>
+
+        <select title="Possui Rateio" id="possuiRateio">
+            <option>Sim</option>
+            <option>Não</option>
+        </select><br>
+
+        <select title="Forma de Alocação" id="formaAlocacao">
+            <option>Ordem</option>
+            <option>Percentual</option>
+        </select><br>
+
+        <input type="number" id="destinoExcedente" placeholder="Destino Excedente"><br>
+
+        <h3>Rateio</h3>
+
+        <input type="number" id="rateioPercentual" placeholder="% kWh">
+        <input type="number" id="rateioConta" placeholder="Conta">
+        <input type="text" id="rateioClasse" placeholder="Classe">
+        <input type="text" id="rateioEndereco" placeholder="Endereço">
+        <button type="button">Adicionar Rateio</button>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>%</th>
+                    <th>Conta</th>
+                    <th>Classe</th>
+                    <th>Endereço</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaRateio"></tbody>
+        </table>
+
+        <h2>Inversores</h2>
+
+        <input type="text" id="invFabricante" placeholder="Fabricante">
+        <input type="text" id="invModelo" placeholder="Modelo">
+        <input type="number" id="invPotencia" placeholder="Potência">
+        <input type="text" id="invTensao" placeholder="Tensão">
+        <input type="number" id="invCorrente" placeholder="Corrente">
+        <input type="text" id="invFator" placeholder="Fator">
+        <input type="text" id="invRendimento" placeholder="Rendimento">
+        <input type="text" id="invDht" placeholder="DHT">
+
+        <button type="button">Adicionar Inversor</button>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Fabricante</th>
+                    <th>Modelo</th>
+                    <th>Potência</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaInversores"></tbody>
+        </table>
+
+        <h2>Módulos</h2>
+
+        <input type="number" id="modPotencia" placeholder="Potência">
+        <input type="number" id="modQuantidade" placeholder="Quantidade">
+        <input type="number" id="modArea" placeholder="Área">
+        <input type="text" id="modFabricante" placeholder="Fabricante">
+        <input type="text" id="modModelo" placeholder="Modelo">
+
+        <button type="button">Adicionar Módulo</button>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Potência</th>
+                    <th>Quantidade</th>
+                    <th>Fabricante</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaModulos"></tbody>
+        </table>
+
+        <h2>Responsável Técnico</h2>
+
+        <input type="text" id="respNome" placeholder="Nome"><br>
+        <input type="text" id="respTitulo" placeholder="Título"><br>
+        <input type="text" id="respRegistro" placeholder="Registro"><br>
+        <input type="text" id="respUf" placeholder="UF Registro"><br>
+        <input type="email" id="respEmail" placeholder="Email"><br>
+        <input type="text" id="respCelular" placeholder="Celular"><br>
+        <input type="text" id="respEndereco" placeholder="Endereço"><br>
+        <input type="text" id="respBairro" placeholder="Bairro"><br>
+        <input type="text" id="respMunicipio" placeholder="Município"><br>
+        <input type="text" id="respUf2" placeholder="UF"><br>
+        <input type="text" id="respCep" placeholder="CEP"><br>
+
+        <br><br>
+
+        <button type="button" id="salvar">Salvar Projeto</button>
+
+    </form>
+
+    <script src="js/form.js"></script>
+
 </body>
 
 </html>

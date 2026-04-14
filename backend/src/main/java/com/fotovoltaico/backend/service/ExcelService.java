@@ -9,6 +9,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.fotovoltaico.backend.model.Inversor;
+import com.fotovoltaico.backend.model.Modulo;
 import com.fotovoltaico.backend.model.Projeto;
 
 public class ExcelService {
@@ -29,21 +31,27 @@ public class ExcelService {
             Workbook workbook = new XSSFWorkbook(fis);
 
             Sheet aba = workbook.getSheetAt(1);
+            if (projeto.getModulos() != null && !projeto.getModulos().isEmpty()) {
+                Modulo m = projeto.getModulos().get(0);
+                
+                getOrCreateCell(aba, 6, 3).setCellValue(projeto.getModulos().get(0).getPotencia());
+                getOrCreateCell(aba, 6, 7).setCellValue(projeto.getModulos().get(0).getQuantidade());
+                getOrCreateCell(aba, 6, 15).setCellValue(projeto.getModulos().get(0).getArea());
+                getOrCreateCell(aba, 6, 19).setCellValue(projeto.getModulos().get(0).getFabricante());
+                getOrCreateCell(aba, 6, 26).setCellValue(projeto.getModulos().get(0).getModelo());
+            }
+            if (projeto.getInversores() != null && !projeto.getInversores().isEmpty()) {
+                Inversor i = projeto.getInversores().get(0);
 
-            getOrCreateCell(aba, 6, 3).setCellValue(projeto.getModulo().getPotencia());
-            getOrCreateCell(aba, 6, 7).setCellValue(projeto.getModulo().getQuantidade());
-            getOrCreateCell(aba, 6, 15).setCellValue(projeto.getModulo().getArea());
-            getOrCreateCell(aba, 6, 19).setCellValue(projeto.getModulo().getFabricante());
-            getOrCreateCell(aba, 6, 26).setCellValue(projeto.getModulo().getModelo());
-
-            getOrCreateCell(aba, 21, 3).setCellValue(projeto.getInversor().getFabricante());
-            getOrCreateCell(aba, 21, 7).setCellValue(projeto.getInversor().getModelo());
-            getOrCreateCell(aba, 21, 11).setCellValue(projeto.getInversor().getPotenciaNominal());
-            getOrCreateCell(aba, 21, 15).setCellValue(projeto.getInversor().getTensaoOperacao());
-            getOrCreateCell(aba, 21, 19).setCellValue(projeto.getInversor().getCorrenteNominal());
-            getOrCreateCell(aba, 21, 22).setCellValue(projeto.getInversor().getFatorPotencia());
-            getOrCreateCell(aba, 21, 25).setCellValue(projeto.getInversor().getRendimento());
-            getOrCreateCell(aba, 21, 28).setCellValue(projeto.getInversor().getDht());
+                getOrCreateCell(aba, 21, 3).setCellValue(projeto.getInversores().get(0).getFabricante());
+                getOrCreateCell(aba, 21, 7).setCellValue(projeto.getInversores().get(0).getModelo());
+                getOrCreateCell(aba, 21, 11).setCellValue(projeto.getInversores().get(0).getPotenciaNominal());
+                getOrCreateCell(aba, 21, 15).setCellValue(projeto.getInversores().get(0).getTensaoOperacao());
+                getOrCreateCell(aba, 21, 19).setCellValue(projeto.getInversores().get(0).getCorrenteNominal());
+                getOrCreateCell(aba, 21, 22).setCellValue(projeto.getInversores().get(0).getFatorPotencia());
+                getOrCreateCell(aba, 21, 25).setCellValue(projeto.getInversores().get(0).getRendimento());
+                getOrCreateCell(aba, 21, 28).setCellValue(projeto.getInversores().get(0).getDht());
+            }
             FileOutputStream fos = new FileOutputStream(caminhoArquivo);
             workbook.write(fos);
 
